@@ -4,6 +4,6 @@ from products.views import plugins, themes
 
 
 urlpatterns = [
-    path("plugins/", view=plugins),
-    path("themes/", view=themes)
+    path("plugins/", view=plugins, name="plugins"),
+    path("themes/", view=themes, name="themes")
 ]

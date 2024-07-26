@@ -4,6 +4,6 @@ from home.views import index, about
 
 
 urlpatterns = [
-    path("", view=index),
-    path("about/", view=about)
+    path("", view=index, name="index"),
+    path("about/", view=about, name="about")
 ]
