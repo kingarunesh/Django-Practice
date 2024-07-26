@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}TEST : {% endblock title %}</title>
+
+        <!---->
+        <link rel="stylesheet" href="{% static "css/common.css" %}">
+        <!---->
+        {% block css_link %}{% endblock css_link %}
+        <!---->
+        {% block c_css_link %}{% endblock c_css_link %}
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+                <li>Products</li>
+            </ul>
+        </nav>
+
+        {% block content %} {% endblock content %}
+    </body>
+</html>
