@@ -14,4 +14,8 @@ def index(request):
 
 
 def about(request):
-    return render(request=request, template_name="home/about.html")
+    context = {
+        "hello": "HELLO"
+    }
+    
+    return render(request=request, template_name="home/about.html", context=context)
