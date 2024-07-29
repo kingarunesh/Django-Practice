@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Forms</title>
+
+        <style>
+            .helptext {
+                color: red;
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Forms</h1>
+
+        <form method="GET">
+            {{ form }}
+
+            <input type="submit" value="Submit" />
+        </form>
+
+        <hr />
+
+        {% comment %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        {% endcomment %}
+        <!---->
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <!---->
+        {% comment %} {{ form.as_ul }} {% endcomment %}
+        <!---->
+        {% comment %} {{ form.name }} {{ form.email }} {{ form.contact_number }} {% endcomment %}
+
+        <hr />
+
+        <form action="" method="get">
+            <div>
+                <label for="id_name">Name:</label>
+                <input type="text" name="name" id="id_name" />
+            </div>
+
+            <div>
+                <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                {{ form.name }}
+            </div>
+
+            <div>
+                {{ form.name.label_tag }}
+                <!---->
+                {{ form.name }}
+                <!---->
+                <br />
+                {{ form.name.value }}
+                <br />
+                {{ form.name.html_name }}
+                <br />
+                {{ form.name.help_text }}
+                <br />
+                {{ form.name.field.required }}
+            </div>
+
+            <input type="submit" value="Submit" />
+        </form>
+
+        <hr />
+
+        <h1>Loop Form</h1>
+
+        <form action="" method="get">
+            {% comment %} {% for field in form %} {% endcomment %} {% for field in form.visible_fields %}
+            <!---->
+            {{ field.label_tag }}
+            <!---->
+            {{ field }}
+            <br />
+            <!---->
+            {% endfor %}
+
+            <input type="submit" value="Submit" />
+        </form>
+
+        <br />
+        <br />
+
+        <form action="" method="get">
+            {% for field in form.hidden_fields %} {{ field }} {% endfor %}
+
+            <input type="submit" value="Submit" />
+        </form>
+
+        <hr />
+
+        <h1>Widgets</h1>
+
+        <form action="" method="get" novalidate>
+            {{ form }}
+
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>
