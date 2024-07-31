@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from myforms.forms import FirstForm, SecondForm
+from myforms.forms import FirstForm, SecondForm, ExampleForm
 
 
 
@@ -37,3 +37,27 @@ def my_forms(request):
     }
     
     return render(request=request, template_name="myforms/myforms.html", context=context)
+
+
+
+def form_example(request):
+    
+    if request.method == "POST":
+        form = ExampleForm(request.POST)
+        
+        if form.is_valid():
+            # print(f"Name: {form.cleaned_data["name"]}.")
+            # print(form.cleaned_data)
+            
+            for key in form.cleaned_data:
+                print(f"{key} : {form.cleaned_data[key]}")
+            
+        
+    else:
+        form = ExampleForm()
+    
+    context = {
+        "form": form
+    }
+    
+    return render(request=request, template_name="myforms/form-examples.html", context=context) 
