@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from myforms.forms import FirstForm, SecondForm, ExampleForm
+from myforms.forms import FirstForm, SecondForm, ExampleForm, StyleForm
 
 
 
@@ -61,3 +61,21 @@ def form_example(request):
     }
     
     return render(request=request, template_name="myforms/form-examples.html", context=context) 
+
+
+
+def style_form_view(request):
+    if request.method == "POST":
+        form = StyleForm(request.POST)
+        
+        if form.is_valid():
+            print(f"\n{form.cleaned_data}\n")
+        
+    else:
+        form = StyleForm()
+    
+    context = {
+        "form": form
+    }
+    
+    return render(request=request, template_name="myforms/style-form.html", context=context)

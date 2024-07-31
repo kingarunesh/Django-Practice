@@ -87,3 +87,12 @@ class ExampleForm(forms.Form):
         
         if password != c_password:
             raise forms.ValidationError("Password and Confrim-Password didn't match")
+
+
+class StyleForm(forms.Form):
+    error_css_class = "thakur_arunesh"
+    required_css_class = "required_class_arunesh"
+    
+    name = forms.CharField(min_length=4, max_length=20, error_messages={"required": "Enter Your Full Name..."})
+    email = forms.EmailField(min_length=10, error_messages={"required": "Enter Your Valid Email Address..."})
+    password = forms.CharField(error_messages={"required": "Enter Valid Password..."}) #! later convert to password and write strong password checker validator
