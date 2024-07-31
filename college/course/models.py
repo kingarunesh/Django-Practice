@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Course(models.Model):
-    course_id = models.IntegerField()
+    course_id = models.CharField(max_length=50)
     title = models.CharField(max_length=200)
     description = models.TextField()
     price = models.IntegerField()

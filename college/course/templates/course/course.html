@@ -4,9 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Course</title>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+        </style>
     </head>
     <body>
-        <h2>Course List</h2>
+        <h1>Course List</h1>
 
         <table>
             <tr>
@@ -32,7 +37,7 @@
 
         <hr />
 
-        <h2>Single Course Details</h2>
+        <h1>Course Details</h1>
 
         <ul>
             <li>ID: {{ first_course.id }}</li>
@@ -41,6 +46,8 @@
         </ul>
 
         <hr />
+
+        <h1>Create Course</h1>
 
         <form method="POST" novalidate>
             {% csrf_token %}
