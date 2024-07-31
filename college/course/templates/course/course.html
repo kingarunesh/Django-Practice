@@ -6,7 +6,7 @@
         <title>Course</title>
     </head>
     <body>
-        <h1>Course Page</h1>
+        <h2>Course List</h2>
 
         <table>
             <tr>
@@ -32,10 +32,24 @@
 
         <hr />
 
+        <h2>Single Course Details</h2>
+
         <ul>
             <li>ID: {{ first_course.id }}</li>
             <li>Course Id: {{ first_course.course_id }}</li>
             <li>Title: {{ first_course.title }}</li>
         </ul>
+
+        <hr />
+
+        <form method="POST" novalidate>
+            {% csrf_token %}
+
+            <!---->
+
+            {{ forms }}
+
+            <input type="submit" value="Submit" />
+        </form>
     </body>
 </html>
