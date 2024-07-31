@@ -21,6 +21,7 @@
                 <th>Description</th>
                 <th>Price</th>
                 <th>Email</th>
+                <th>DELETE</th>
             </tr>
 
             {% for course in course_list %}
@@ -31,6 +32,8 @@
                 <td>{{ course.description }}</td>
                 <td>{{ course.price }}</td>
                 <td>{{ course.email }}</td>
+                <td><a href="{% url "course_delete" course.id %}">❌</a></td>
+
             </tr>
             {% endfor %}
         </table>

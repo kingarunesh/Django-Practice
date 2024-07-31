@@ -9,7 +9,7 @@ def course(request):
     
     course_list = Course.objects.all()
     
-    first_course = Course.objects.get(pk=1)
+    # first_course = Course.objects.get(pk=1)
     
     if request.method == "POST":
         form = CourseForm(request.POST)
@@ -49,12 +49,20 @@ def course(request):
     
     context = {
         "course_list": course_list,
-        "first_course": first_course,
+        # "first_course": first_course,
         "forms": form
     }
     
     return render(request=request, template_name="course/course.html", context=context)
 
+
+def course_delete(request, id):
+    course = Course.objects.get(pk=id)
+    
+    course.delete()
+    
+    return redirect("course_page")
+    
 
 def success_submit(request):
     return render(request=request, template_name="course/success.html")
