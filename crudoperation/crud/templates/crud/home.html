@@ -11,15 +11,23 @@
 <div class="row">
     <!--SECTION :   form   -->
     <div class="col-4">
-        <form>
+        <form method="POST" novalidate>
+            {% csrf_token %} {% comment %}
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
+
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" />
             </div>
+            {% endcomment %}
+
+            <hr />
+
+            {{ form }}
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
@@ -37,12 +45,14 @@
                 </tr>
             </thead>
             <tbody>
+                {% for student in students %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Arunesh</td>
-                    <td>arunesh@gmail.com</td>
-                    <td>NIda@8050523394</td>
+                    <th scope="row">{{ student.id }}</th>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email}}</td>
+                    <td>{{ student.password }}</td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
