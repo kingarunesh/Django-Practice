@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+<!---->
+
+{% block title %}CRUD Operations{% endblock title %}
+
+<!---->
+
+{% block content %}
+
+<div class="row">
+    <!--SECTION :   form   -->
+    <div class="col-4">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!--SECTION :   table   -->
+    <div class="col-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">PASSWORD</th>
+                    <th scope="col">ACTION'S</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Arunesh</td>
+                    <td>arunesh@gmail.com</td>
+                    <td>NIda@8050523394</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}
