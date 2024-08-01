@@ -25,3 +25,11 @@ def home(request):
     }
     
     return render(request=request, template_name="crud/home.html", context=context)
+
+
+def delete_student(request, id):
+    student = Student.objects.get(pk=id)
+    
+    student.delete()
+    
+    return redirect("home")

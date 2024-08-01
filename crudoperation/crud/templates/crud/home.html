@@ -41,7 +41,8 @@
                     <th scope="col">NAME</th>
                     <th scope="col">EMAIL</th>
                     <th scope="col">PASSWORD</th>
-                    <th scope="col">ACTION'S</th>
+                    <th scope="col">EDIT</th>
+                    <th scope="col">DELETE</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +52,8 @@
                     <td>{{ student.name }}</td>
                     <td>{{ student.email}}</td>
                     <td>{{ student.password }}</td>
+                    <td><a href="">📝</a></td>
+                    <td><a href="{% url "delete_student" student.id %}">❌</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
