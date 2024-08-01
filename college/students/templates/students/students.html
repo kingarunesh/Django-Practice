@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+
+            table,
+            tr,
+            td,
+            th {
+                border: 1px solid #000;
+                border-collapse: collapse;
+                padding: 4px 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Student List</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+            </tr>
+
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.password }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <hr />
+
+        <form method="POST" novalidate>
+            {% csrf_token %}
+
+            <!---->
+
+            {{ form }}
+
+            <input type="submit" value="Submit" />
+        </form>
+    </body>
+</html>
