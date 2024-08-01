@@ -4,7 +4,11 @@ from students.models import Student
 from students.forms import StudentForm
 
 
-def students(request):
+def students(request, my_id, testing, id):
+    
+    print(testing)
+    print(id)
+    print(my_id)
     
     students = Student.objects.all()
     
