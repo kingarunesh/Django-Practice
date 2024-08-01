@@ -7,7 +7,9 @@ from crud.models import Student
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ["name", "email", "password"]
+        fields = "__all__"
+        # fields = ["email", "password", "name"]
+        # exclude = ["name"]
         
         labels = {
             "name": "Full Name",
