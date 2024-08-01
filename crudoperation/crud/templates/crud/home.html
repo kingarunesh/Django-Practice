@@ -24,7 +24,6 @@
             </div>
             {% endcomment %}
 
-            <hr />
 
             {{ form }}
 
@@ -52,7 +51,7 @@
                     <td>{{ student.name }}</td>
                     <td>{{ student.email}}</td>
                     <td>{{ student.password }}</td>
-                    <td><a href="">📝</a></td>
+                    <td><a href="{% url "edit_student" student.id %}">📝</a></td>
                     <td><a href="{% url "delete_student" student.id %}">❌</a></td>
                 </tr>
                 {% endfor %}

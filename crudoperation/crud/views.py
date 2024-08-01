@@ -27,6 +27,28 @@ def home(request):
     return render(request=request, template_name="crud/home.html", context=context)
 
 
+def edit_student(request, id):
+    
+    student = Student.objects.get(pk=id)
+    
+    if request.method == "POST":
+        form = StudentForm(request.POST, instance=student)
+        
+        if form.is_valid():
+            form.save()
+            
+            return redirect("home")
+        
+    else:
+        form = StudentForm(instance=student)
+    
+    context = {
+        "form": form
+    }
+    
+    return render(request=request, template_name="crud/update.html", context=context)
+
+
 def delete_student(request, id):
     student = Student.objects.get(pk=id)
     
