@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 
-from course.models import Course
-from course.forms import CourseForm
+from course.models import Course, Member
+from course.forms import CourseForm, TeacherForm, StudentForm
 
 
 def course(request):
@@ -66,3 +66,37 @@ def course_delete(request, id):
 
 def success_submit(request):
     return render(request=request, template_name="course/success.html")
+
+
+
+def teacher_view(request):
+    if request.method == "POST":
+        form = TeacherForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            
+    else:
+        form = TeacherForm()
+    
+    context = {
+        "form": form
+    }
+    
+    return render(request=request, template_name="course/teacher.html", context=context)
+
+
+def student_view(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+    else:
+        form = StudentForm()
+    
+    context = {
+        "form": form
+    }
+    
+    return render(request=request, template_name="course/student.html", context=context)
