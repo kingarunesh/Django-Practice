@@ -4,6 +4,13 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+
+        <style>
+            .success {
+                color: green;
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
         <form method="POST" novalidate>
@@ -21,5 +28,19 @@
 
             <input type="submit" value="Register" />
         </form>
+
+        {% if messages %}
+        <!---->
+        {% for message in messages %}
+        <!---->
+        <!---->
+        <span {% if message.tags %}class="{{ message.tags }}" {% endif %}>{{ message }}</span>
+        <!---->
+        {% endfor %}
+        <!---->
+        {% endif %}
+        <!---->
+        <!---->
+        <!---->
     </body>
 </html>
