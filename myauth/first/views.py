@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.models import User
 from django.contrib import messages
 
-from first.forms import RegisterForm, EditProfileForm
+from first.forms import RegisterForm, EditProfileForm, EditAdminProfileForm
 
 
 
@@ -77,7 +78,11 @@ def profile_view(request):
         return redirect("login_view")
     
     if request.method == "POST":
-        form = EditProfileForm(request.POST, instance=request.user)
+        
+        if request.user.is_superuser:
+            form = EditAdminProfileForm(request.POST, instance=request.user)
+        else:
+            form = EditProfileForm(request.POST, instance=request.user)
         
         if form.is_valid():
             form.save()
@@ -85,14 +90,48 @@ def profile_view(request):
             messages.success(request, "Profile Updated...")
             
     else:
-        form = EditProfileForm(instance=request.user)
+        if request.user.is_superuser:
+            form = EditAdminProfileForm(instance=request.user)
+        else:
+            form = EditProfileForm(instance=request.user)
+    
+    if request.user.is_superuser:
+        users = User.objects.all()
+    else:
+        users = None
     
     context = {
         "user_details": request.user,
-        "form": form
+        "form": form,
+        "users": users
     }
     
     return render(request=request, template_name="first/profile.html", context=context)
+
+def user_details(request, id):
+    if not request.user.is_authenticated:
+        return redirect("login_view")
+    
+    if not request.user.is_superuser:
+        return redirect("profile_view")
+    
+    user_info = User.objects.get(pk=id)
+    
+    if request.method == "POST":
+        form = EditAdminProfileForm(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            form.save()
+            messages.success("Updated")
+    else:
+        form = EditAdminProfileForm(instance=user_info)
+    
+    context = {
+        "user_info": user_info,
+        "form": form
+    }
+    
+    return render(request=request, template_name="first/user-details.html", context=context)
 
 
 def logout_view(request):

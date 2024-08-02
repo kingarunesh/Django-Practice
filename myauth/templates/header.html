@@ -1,0 +1,14 @@
+<ul>
+    {% if request.user.is_authenticated %}
+    <li><a href="{% url "profile_view" %}">Profile</a></li>
+    <li><a href="{% url "logout_view" %}">Logout</a></li>
+    <li><a href="{% url "change_password" %}">Change Password With Old Password</a></li>
+    <li><a href="{% url "change_password_without_old_pass" %}">Change Password WithOut Old Password</a></li>
+    {% else %}
+    <li><a href="{% url "login_view" %}">Login</a></li>
+    <li><a href="{% url "register" %}">Register</a></li>
+    {% endif %}
+</ul>
+
+<hr>
+<br>

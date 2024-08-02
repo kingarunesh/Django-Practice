@@ -13,6 +13,9 @@
         </style>
     </head>
     <body>
+        {% include "header.html" %}
+
+        <h1>Register</h1>
         <form method="POST" novalidate>
             {% csrf_token %}
 

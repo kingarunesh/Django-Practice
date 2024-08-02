@@ -32,3 +32,11 @@ class EditProfileForm(UserChangeForm):
         # widgets = {
         #     "last_login": forms.DateTimeInput(disabled=True)
         # }
+
+
+class EditAdminProfileForm(UserChangeForm):
+    password = None
+    class Meta:
+        model = User
+        fields = "__all__"
+        exclude = ("password",)
