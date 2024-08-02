@@ -21,5 +21,32 @@
         <!---->
 
         <p>Hello, {{ user_details.first_name }}</p>
+
+        <h1>Update Profile Details</h1>
+
+        <form method="POST" novalidate>
+            {% csrf_token %}
+
+            <!---->
+
+            {% if form.non_field_errors %}
+            <!---->
+            {% for error in form.non_field_errors %}
+            <!---->
+            <span>{{ error }}</span>
+            <!---->
+            {% endfor %}
+            <!---->
+            {% endif %}
+            <!---->
+
+            {% for field in form %}
+            <!---->
+            <div>{{ field.label_tag }} {{ field }} {{ field.errors }}</div>
+            <!---->
+            {% endfor %}
+
+            <input type="submit" value="Submit" />
+        </form>
     </body>
 </html>

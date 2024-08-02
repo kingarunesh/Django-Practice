@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, SetPasswordForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
 
-from first.forms import RegisterForm
+from first.forms import RegisterForm, EditProfileForm
 
 
 
@@ -76,8 +76,20 @@ def profile_view(request):
     if not request.user.is_authenticated:
         return redirect("login_view")
     
+    if request.method == "POST":
+        form = EditProfileForm(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            form.save()
+            
+            messages.success(request, "Profile Updated...")
+            
+    else:
+        form = EditProfileForm(instance=request.user)
+    
     context = {
-        "user_details": request.user
+        "user_details": request.user,
+        "form": form
     }
     
     return render(request=request, template_name="first/profile.html", context=context)
