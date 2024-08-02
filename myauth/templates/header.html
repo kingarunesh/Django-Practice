@@ -1,5 +1,6 @@
 <ul>
     {% if request.user.is_authenticated %}
+    <li><a href="{% url "dashboard_view" %}">Dashboard</a></li>
     <li><a href="{% url "profile_view" %}">Profile</a></li>
     <li><a href="{% url "logout_view" %}">Logout</a></li>
     <li><a href="{% url "change_password" %}">Change Password With Old Password</a></li>

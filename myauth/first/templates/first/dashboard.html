@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        {% include "header.html" %}
+
+        <h1>Dashboard</h1>
+
+        <!--NOTE :  perms.app_name.action_ModelName  -->
+
+        {% if perms.first.add_blog %}
+        <button>Add</button>
+        <br />
+        <br />
+        {% endif %}
+
+        <!---->
+
+        {% if perms.first.view_blog %}
+        <button>View</button>
+        <br />
+        <br />
+        {% endif %}
+
+        <!---->
+
+        {% if perms.first.change_blog %}
+        <button>Edit</button>
+        <br />
+        <br />
+        {% endif %}
+
+        <!---->
+
+        {% if perms.first.delete_blog %}
+        <button>Delete</button>
+        {% endif %}
+    </body>
+</html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, SetPasswordForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib import messages
 
 from first.forms import RegisterForm, EditProfileForm, EditAdminProfileForm
@@ -28,7 +28,11 @@ def register(request):
         form = RegisterForm(request.POST)
         
         if form.is_valid():
-            form.save()
+            new_user = form.save()
+            
+            add_to_group = Group.objects.get(name="Editor")
+            
+            new_user.groups.add(add_to_group)
             
             messages.success(request, "Account Register successfully...")
             
@@ -132,6 +136,14 @@ def user_details(request, id):
     }
     
     return render(request=request, template_name="first/user-details.html", context=context)
+
+
+def dashboard_view(request):
+    if not request.user.is_authenticated:
+        return redirect("login_view")
+    
+    return render(request=request, template_name="first/dashboard.html")
+
 
 
 def logout_view(request):
