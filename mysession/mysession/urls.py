@@ -7,4 +7,5 @@ urlpatterns = [
     
     path("", include("mycookies.urls")),
     path("", include("mysessions.urls")),
+    path("", include("pagecounter.urls")),
 ]

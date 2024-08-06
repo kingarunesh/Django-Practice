@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "mycookies",
     "mysessions",
+    "pagecounter",
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,7 @@ SESSION_COOKIE_AGE = 10
 SESSION_COOKIE_NAME = "thakur_session"
 SESSION_COOKIE_PATH = "/"
 SESSION_COOKIE_SECURE = True
+
+
+# SESSION_ENGINE = "django.contrib.sessions.backends.file"
+# SESSION_FILE_PATH = BASE_DIR / "sessions"
