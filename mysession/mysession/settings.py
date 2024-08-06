@@ -126,7 +126,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 #NOTE :         session settings
-SESSION_COOKIE_AGE = 120
+SESSION_COOKIE_AGE = 10
 SESSION_COOKIE_NAME = "thakur_session"
 SESSION_COOKIE_PATH = "/"
 SESSION_COOKIE_SECURE = True

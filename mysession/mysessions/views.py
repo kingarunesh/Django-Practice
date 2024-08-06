@@ -6,7 +6,7 @@ def set_session(request):
     request.session["first_name"] = "Arunesh"
     request.session["last_name"] = "thakur"
     
-    request.session.set_expiry(60)
+    # request.session.set_expiry(60)
     
     #!      test  cookies
     request.session.set_test_cookie()
@@ -69,3 +69,23 @@ def del_session(request):
     
     
     return render(request=request, template_name="mysessions/del-session.html")
+
+
+
+def bank_page(request):
+    """
+        auto reset time when page reload
+    """
+    
+    if "first_name" in request.session:
+        first_name = request.session["first_name"]
+        
+        request.session.modified = True
+    else:
+        first_name = None
+        
+    context={
+        "first_name": first_name
+    }
+    
+    return render(request=request, template_name="mysessions/bank.html", context=context)
