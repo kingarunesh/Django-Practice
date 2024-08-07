@@ -1,0 +1,14 @@
+{% load cache %}
+
+<h1>Template Fragment Cache</h1>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+
+    {% cache 15 first %}
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    {% endcache first %}
+</ul>
