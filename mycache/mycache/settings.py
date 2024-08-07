@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "persite",
     "perview",
     "tfcache",
+    "lowlevelcache",
 ]
 
 MIDDLEWARE = [

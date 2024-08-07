@@ -9,4 +9,5 @@ urlpatterns = [
     path("", include("persite.urls")),
     path("", include("perview.urls")),
     path("", include("tfcache.urls")),
+    path("", include("lowlevelcache.urls")),
 ]
